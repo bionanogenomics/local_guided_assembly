@@ -8,9 +8,13 @@ For quick reference, please proceed to Local Guided Assembly (GA-Local) via Comm
 
 ## Set-up & Dependencies
 
-Conda environment and Solve need to be installed in order to run pipelines. The following describes Solve installation in a Linux operating system.
+Conda environment and Solve need to be installed in order to run pipelines. The following describes Solve installation in a Linux operating system. 
 
-1. Acquire `*.tar.gz` of Solve (e.g. Solve 1.7.2.tar.gz) from [Bionano Software Download](https://bionano.com/software-downloads/).
+In general, the latest `*.tar.gz` of Solve can be downloaded from [Bionano Software Download](https://bionano.com/software-downloads/). Installation guide in a Linux operating system can be found in [30182 Bionano Solve Installation Guide](https://bionano.com/wp-content/uploads/2023/08/CG-30182-Bionano-Solve-Installation-Guide.pdf) Page 5.
+
+Alternatively, if using Solve 3.7.2:
+
+1. Acquire `*.tar.gz` of Solve 3.7.2.tar.gz.
 2. Install `bionano_python3.0.yaml`.
 ```
 conda env create --file bionano_python3.0.yml
@@ -37,13 +41,13 @@ export R_LIBS_USER=~/Rpackages
 
 ### Local Guided Assembly (GA-Local) via Command Line Usage ###
 
-`local_guided_assembly.sh` can only be run on machine with Linux-based operating system with Solve 1.7.2 installed and `bionano_python3.0` conda environment installed. Paths to pipeline, repeat coordinate .csv, and seed files path referenced in the script need to be examined to point to user's Solve installation. 
+`local_guided_assembly.sh` can only be run on machine with Linux-based operating system with Solve 3.7.2 installed and `bionano_python3.0` conda environment installed. Paths to pipeline, repeat coordinate .csv, and seed files path referenced in the script need to be examined to point to user's Solve installation. 
 
 `hg38_DLE1_0kb_0labels.cmap` reference and `optArguments_haplotype_DLE1_saphyr_human_D4Z4.xml` files will be provided as input in the script for GA, which are preinstalled in Solve via command line.
 
 Once Guided Assembly completes, the second portion of the script script launches a custom Enfocus pipeline assembling maps along repeat expansion gene coordinates supplied as an argument, which can be found in `coo_csvs/*.csv`. 
 
-Script call will automatically reference the necessary repeat coordinate file for the custom Enfocus pipeline. Only *FMR1, RFC1, DMPK, STARD7, CNBP, ATXN10, FXN, NOP56, and c9orf72* genes are supported by this script
+Script call will automatically reference the necessary repeat coordinate file for the custom Enfocus pipeline. Only *FMR1, RFC1, DMPK, STARD7, CNBP, ATXN10, FXN, NOP56,* and *c9orf72* genes are supported by this script
 
 Example script call
 ```
@@ -65,7 +69,7 @@ done
 ```
 
 ### Output ###
-The output file is similar to an Enfocus Fragile X assembly, with the difference that it estimates repeat expansion distances along the locus specified by the .csv file instead of _FMR1_.
+The output file is similar to an Enfocus Fragile X assembly, with the difference that it estimates repeat expansion distances along the locus specified by the .csv file instead of _FMR1_. Furthermore, the estimated number of repeat units depends on the repeat length (e.g trinucleotide, pentanucleotide), which is included in the `~/coo_csvs/*_repeat_coords.csv` file for genes *FMR1, RFC1, DMPK, STARD7, CNBP, ATXN10, FXN, NOP56, and c9orf72*.
 
 ### Resources ###
 
@@ -77,4 +81,4 @@ More information can be found in the following documentation:
 
 ## Contact ###
 
-Molecule distance script is authored by Joyce Lee, Syukri Shukor, and Jillian Burke. For any questions, please reach out to Syukri Shukor (sshukor@bionano.com), Andy Pang (apang@bionano.com), or support@bionano.com for questions and issues.
+Molecule distance script is authored by Joyce Lee, Syukri Shukor, Jillian Burke, and Andy Pang. For any questions, please reach out to Syukri Shukor (sshukor@bionano.com) or Andy Pang (apang@bionano.com) for questions and issues.
