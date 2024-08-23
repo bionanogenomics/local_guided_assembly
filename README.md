@@ -47,7 +47,7 @@ export R_LIBS_USER=~/Rpackages
 
 Once Guided Assembly completes, the second portion of the script script launches a custom Enfocus pipeline assembling maps along repeat expansion gene coordinates supplied as an argument, which can be found in `coo_csvs/*.csv`. 
 
-Script call will automatically reference the necessary repeat coordinate file for the custom Enfocus pipeline. Only *FMR1, RFC1, DMPK, STARD7, CNBP, ATXN10, FXN, NOP56,* and *c9orf72* genes are supported by this script
+Script call will automatically reference the necessary repeat coordinate file for the custom Enfocus pipeline. All repeat loci with an expected repeat size >300-500 bp can be analyzed with this script by changing the -coo parameter. In our study, only the known repeat loci in CNBP, DMPK, RFC1, FMR1, STARD7, ATXN10, FXN, NOP56, and C9orf72 have been analyzed and the -coo parameter coordinate files for these loci are provided on this Github page. To run the script for a different repeat locus, the script has to be run using a user-provided custom -coo parameter coordinate file.
 
 Example script call
 ```
